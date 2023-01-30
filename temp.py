@@ -18,11 +18,9 @@ time.sleep(0.25)
 adc = spi.xfer2([0xff,0xff])
 temp = (adc[0] << 8) | adc[1]
 
-temp = temp >> 3
+# if(temp >= 4096):
+#    temp = temp - 8192
 
-if(temp >= 4096):
-    temp = temp - 8192
-
-print(temp / 16.0)
+print(temp / 128.0)
 
 spi.close()
