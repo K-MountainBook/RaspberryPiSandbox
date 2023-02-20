@@ -13,11 +13,10 @@ def main():
     # 読み取った内容を表示
     print("IDm : " + idm)
 
-    configfile = open("config.json","r")
-    jsonData = json.load(configfile)
-
-    con = Database.DataBase(jsonData)
+    # Detabaseインスタンスの生成
+    con = Database.DataBase("testenv")
     con.test()
-
+    
+    return con
 if __name__ == '__main__':
     main()
