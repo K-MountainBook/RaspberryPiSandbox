@@ -5,7 +5,7 @@ import binascii
 
 class CardReader(object):
     """NFCデータ取得クラス"""
-    def on_connect(self, tag):
+    def __on_connect(self, tag):
         """リーダ読み込み"""
         
         # IDmのみ取得して表示
@@ -16,9 +16,9 @@ class CardReader(object):
         clf = nfc.ContactlessFrontend('usb')
         try:
             # おサイフケータイからも取得するため、NFC読み込みの範囲をFelicaに限定する(212bps,424bps)
-            #            clf.connect(rdwr = {'on-connect':self.on_connect})
+            # clf.connect(rdwr = {'on-connect':self.on_connect})
             clf.connect(
-                rdwr={'targets': ['212F', '424F'], 'on-connect': self.on_connect})
+                rdwr={'targets': ['212F', '424F'], 'on-connect': self.__on_connect})
 
         finally:
             clf.close
@@ -28,8 +28,6 @@ class CardReader(object):
         return result
 
 
-# if __name__ == '__main__':
-#     print('Hello world!!')
-#     cr = MyCardReader()
-
-#     cr.read_id()
+    def read_id_stab(self):
+        self.idm = "000000000000"
+        return True
