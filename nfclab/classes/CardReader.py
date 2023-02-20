@@ -3,18 +3,13 @@ import os
 import binascii
 
 
-class MyCardReader(object):
+class CardReader(object):
     """NFCデータ取得クラス"""
     def __on_connect(self, tag):
         """リーダ読み込み"""
-        print(tag)
-
+        
         # IDmのみ取得して表示
         self.idm = binascii.hexlify(tag._nfcid)
-        print("IDm : " + str(self.idm, 'utf-8'))
-
-        return True
-
     
     def read_id(self):
         """NFCリーダ接続"""
@@ -27,6 +22,10 @@ class MyCardReader(object):
 
         finally:
             clf.close
+            
+    def getIDm(self):
+        result = self.read_id()
+        return result
 
 
     def read_id_stab(self):
