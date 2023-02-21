@@ -5,16 +5,26 @@ from . import OutputLogs
 
 class DataBase():
     def __init__(self, env):
+        """DB接続インスタンス。
 
+        ホスト名の設定が存在しない場合defaultの設定を読み込む。
+        """
         configfile = open("config.json", "r")
         jsonData = json.load(configfile)
+
+        if env not in jsonData:
+            env = "default"
 
         self.con = mysql.connector.connect(host=jsonData[env]["server"],
                                            port=jsonData[env]["port"],
                                            user=jsonData[env]["user"],
                                            password=jsonData[env]["password"])
 
-    def test(self):
+    def connectedCheck(self):
+        """このインスタンスでDBに接続できるかのチェック。
+
+        標準出力に出力される。
+        """
         log = OutputLogs.OutputLogs()
         log.output(self.__class__.__name__, str(self.con.is_connected()))
 

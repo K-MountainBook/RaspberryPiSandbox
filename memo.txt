@@ -1,1 +1,1 @@
-nfctarget 212F 424F
+attmanageテーブルを追加する。
