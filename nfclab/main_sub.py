@@ -1,30 +1,18 @@
-import json
-import os
+import socket
 from classes import CardReader, Database
 
+
 def main():
-    """メインメソッド"""
+
+    # カードリーダー準備（スタブ）
     cr = CardReader.CardReader()
-
-    # Felicaを読み取る。
     cr.read_id_stab()
-    
-    # 読み取ったカードから固有番号を取得する
-    idm = cr.idm.upper()
-    # 読み取った内容を表示
-    print("IDm : " + idm)
+    print(cr.idm)
 
-    environ_var = os.environ['SPRING_PROFILES_ACTIVE']
+    # Detabaseインスタンスの生成
+    con = Database.DataBase(socket.gethostname())
+    con.connectedCheck()
 
-    if(environ_var == ""):
-        configfile = open("config" + environ_var + ".json","r")
-    else:
-        configfile = open("config_" + environ_var + ".json","r")
-
-    jsonData = json.load(configfile)
-
-    con = Database.DataBase(jsonData)
-    con.test()
 
 if __name__ == '__main__':
     main()

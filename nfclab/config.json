@@ -1,7 +1,16 @@
 {
-    "user": "root",
-    "password": "rootpass",
-    "server": "192.168.1.200",
-    "port":"3306",
-    "database": ""
+    "default": {
+        "user": "pythonroot",
+        "password": "pythonrootpass",
+        "server": "localhost",
+        "port": "3306",
+        "database": "attmanage"
+    },
+    "env": {
+        "user": "root",
+        "password": "rootpass",
+        "server": "192.168.1.200",
+        "port": "3306",
+        "database": "attmanage"
+    }
 }

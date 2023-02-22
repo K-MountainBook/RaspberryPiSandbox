@@ -1,16 +1,16 @@
 import nfc
-import os
 import binascii
 
 
 class CardReader(object):
     """NFCデータ取得クラス"""
+
     def __on_connect(self, tag):
         """リーダ読み込み"""
-        
+
         # IDmのみ取得して表示
         self.idm = binascii.hexlify(tag._nfcid)
-    
+
     def read_id(self):
         """NFCリーダ接続"""
         clf = nfc.ContactlessFrontend('usb')
@@ -22,11 +22,10 @@ class CardReader(object):
 
         finally:
             clf.close
-            
+
     def getIDm(self):
         result = self.read_id()
         return result
-
 
     def read_id_stab(self):
         self.idm = "000000000000"
