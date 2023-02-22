@@ -1,0 +1,7 @@
+{
+    "user": "pythonroot",
+    "password": "pythonrootpass",
+    "server": "localhost",
+    "port":"3306",
+    "database": ""
+}
