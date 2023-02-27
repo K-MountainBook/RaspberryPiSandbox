@@ -12,6 +12,9 @@ def main():
     # Detabaseインスタンスの生成
     con = Database.DataBase(socket.gethostname())
     con.connectedCheck()
+    result = con.execute('select IDM, StudentId from idm_bind_number')
+
+    print(result)
 
 
 if __name__ == '__main__':

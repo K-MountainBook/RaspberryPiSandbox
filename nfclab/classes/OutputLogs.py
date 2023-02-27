@@ -6,5 +6,5 @@ class OutputLogs():
         pass
 
     def output(self, className, message):
-        print('[{}] [{}] db is connected: {}'.format(datetime.datetime.now(), className,
+        print('[{}] [{}] {}'.format(datetime.datetime.now(), className,
               message))

@@ -1,5 +1,6 @@
 import nfc
 import binascii
+from .MyConst import Const
 
 
 class CardReader(object):
@@ -28,5 +29,5 @@ class CardReader(object):
         return result
 
     def read_id_stab(self):
-        self.idm = "000000000000"
+        self.idm = Const.SAMPLE_IDM
         return True
