@@ -1,21 +1,19 @@
 import socket
-from classes import CardReader, Database
+import db_access as db
+from classes import CardReader, Database, OutputLogs as logs
 
 
 def main():
 
     # カードリーダー準備（スタブ）
     cr = CardReader.CardReader()
+    log = logs.OutputLogs()
     cr.read_id_stab()
-    print(cr.idm)
 
-    # Detabaseインスタンスの生成
-    con = Database.DataBase(socket.gethostname())
-    con.connectedCheck()
-    result = con.execute('select IDM, StudentId from idm_bind_number')
+    # idmに紐づく学生番号を検索
+    result = db.findidm(cr.idm)
 
-    print(result)
-
+    log.output(className=__name__, message="scanning idm:" + cr.idm)
 
 if __name__ == '__main__':
     main()

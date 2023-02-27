@@ -39,11 +39,11 @@ class DataBase():
         # print('[{}] [{}] db is connected:{}'.format(datetime.datetime.now(),
         #       str(self.con.is_connected())))
 
-    def execute(self, query):
-        """引数で渡されたクエリを実行する"""
-        # dictionary引数を指定して、dict型で値を受け取る
+    def execute(self, query, param):
+        """引数で渡されたクエリを実行する
+         dictionary引数を指定して、dict型で値を受け取る"""
         csr = self.con.cursor(dictionary=True)
-        csr.execute(query)
+        csr.execute(query,param)
 
         fetched = csr.fetchall()
         csr.close()

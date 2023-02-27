@@ -1,6 +1,7 @@
 import nfc
 import binascii
 from .MyConst import Const
+from classes.OutputLogs import OutputLogs as logs
 
 
 class CardReader(object):
@@ -20,7 +21,7 @@ class CardReader(object):
             # clf.connect(rdwr = {'on-connect':self.on_connect})
             clf.connect(
                 rdwr={'targets': ['212F', '424F'], 'on-connect': self.__on_connect})
-
+            logs.output(self.__class__.__name__, "read idm :" + str(self.idm))
         finally:
             clf.close
 
@@ -30,4 +31,4 @@ class CardReader(object):
 
     def read_id_stab(self):
         self.idm = Const.SAMPLE_IDM
-        return True
+        
