@@ -31,4 +31,4 @@ class CardReader(object):
 
     def read_id_stab(self):
         self.idm = Const.SAMPLE_IDM
-        
+        self.studentNumber = Const.SAMPLE_STUDENT_NUM

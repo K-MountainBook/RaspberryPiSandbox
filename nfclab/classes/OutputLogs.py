@@ -1,4 +1,5 @@
 import datetime
+import sys
 
 
 class OutputLogs():
@@ -8,3 +9,7 @@ class OutputLogs():
     def output(self, className, message):
         print('[{}] [{}] {}'.format(datetime.datetime.now(), className,
               message))
+
+    def outputError(self, className, message):
+        print('[{}] [{}] {}'.format(datetime.datetime.now(), className,
+                                    message), file=sys.stderr)

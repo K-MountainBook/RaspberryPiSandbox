@@ -11,9 +11,16 @@ def main():
     cr.read_id_stab()
 
     # idmに紐づく学生番号を検索
-    result = db.findidm(cr.idm)
+    result = db.findStuNoByIdm(cr.idm)
+    # print(result[0]['IDM'])
+    # print(result[0]['StudentId'])
+    if(len(result) == 1):
+        log.output(className=__name__, message="scanning idm:" +
+                   result[0]['IDM'] + ' ' + "StudentNumber:" + result[0]['StudentId'])
+    else:
+        log.outputError(className=__name__,
+                        message="student Number is duplicate or not exist")
 
-    log.output(className=__name__, message="scanning idm:" + cr.idm)
 
 if __name__ == '__main__':
     main()
